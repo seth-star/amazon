@@ -1,0 +1,41 @@
+import { products } from "../data/products.js";
+let productsHTML = '';
+
+products.forEach((product)=>{
+  productsHTML += 
+  ` <section class="product-details-container">
+        <div class="images-container">
+          <img src="${product.image}" class="images">
+        </div>
+        <div class="paragraphe-container">
+          <p class="paragraphes">${product.name}</p>
+        </div>
+        <div class="rating-count-container">
+          <img src="images/images/ratings/rating-${product.rating.stars*10}.png" class="images-rating">
+          <span class="count">${product.rating.count}</span>
+        </div>
+        <div class="price-container">$${product.priceCents/100}</div>
+        <div class="select-container">
+          <select class="select">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+          </select>
+        </div>
+
+        <div class="add-to-cart-container">
+          <button class="add-to-cart-button">Add To Cart</button>
+        </div>
+
+      </section>`
+
+});
+document.querySelector('.js-main').innerHTML = productsHTML;
+console.log(productsHTML);
