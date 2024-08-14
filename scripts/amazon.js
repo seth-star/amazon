@@ -16,8 +16,8 @@ products.forEach((product)=>{
           <span class="count">${product.rating.count}</span>
         </div>
         <div class="price-container">$${product.priceCents/100}</div>
-        <div class="select-container">
-          <select class="select">
+        <div class="select-container ">
+          <select class="select js-select-${product.id}">
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -45,8 +45,8 @@ document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
 button.addEventListener('click',()=>{
   const productId = button.dataset.productId;
   addToCart(productId);
-  updateCartQuantity(productId);
-
+  updateCartQuantity();
+  
   let timeoutId;
   let clickOn = false;
   if (!clickOn) {

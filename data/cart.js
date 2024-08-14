@@ -18,10 +18,14 @@ export function addToCart(productId) {
  console.log(cart);
 }
 
-export function updateCartQuantity(productId) {
+export function updateCartQuantity() {
+ 
   let cartQuantiy = 0;
   cart.forEach((cartItem)=>{
-    cartQuantiy += cartItem.quantity;
+    const productId = cartItem.productId;
+    const selector = document.querySelector(`.js-select-${productId}`).value;
+   
+    cartQuantiy += Number(selector);
   });
   document.querySelector('.js-cart-quantity').innerHTML = cartQuantiy;
 }
