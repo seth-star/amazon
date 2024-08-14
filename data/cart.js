@@ -17,3 +17,11 @@ export function addToCart(productId) {
  }
  console.log(cart);
 }
+
+export function updateCartQuantity(productId) {
+  let cartQuantiy = 0;
+  cart.forEach((cartItem)=>{
+    cartQuantiy += cartItem.quantity;
+  });
+  document.querySelector('.js-cart-quantity').innerHTML = cartQuantiy;
+}
