@@ -1,5 +1,6 @@
 import{cart} from '../data/cart.js';
 import { products } from '../data/products.js';
+import { deliveryOptions} from '../data/deliveryoptions.js';
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 
 
@@ -33,47 +34,39 @@ import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
               <div class="product-quantity">
                 Quantity: ${cartItem.quantity} <span class="update-delete">Update Delete</span>
               </div>
-  
             </div>
+
             <div class="delivery-options">
               <div class="delivery-options-head">
                 Choose a delivery option:
               </div>
-              <div class="input-radio">
-                <input type="radio" checked>
-                <div class="paragraphe-for-delivery-option">
-                  <span class="paragraphe-span">Friday, August 16</span>
-                  <span class="paragraphe-span2">FREE Shipping</span>
-                </div>
-              </div>
-              <div class="input-radio">
-                <input type="radio" checked>
-                <div class="paragraphe-for-delivery-option">
-                  <span class="paragraphe-span">Monday, August 12</span>
-                  <span class="paragraphe-span2">$4.99 - Shipping</span>
-                </div>
-              </div>
-              <div class="input-radio">
-                <input type="radio" checked>
-                <div class="paragraphe-for-delivery-option">
-                  <span class="paragraphe-span">Thursday, August 8</span>
-                  <span class="paragraphe-span2">$9.99 - Shipping</span>
-                </div>
-              </div>
+              ${deliveryOptionHTML()}
             </div>
           </div>
         </section>`
    
   })
   document.querySelector('.js-order-summary').innerHTML = orderSummaryHTML;
-  function deliveryOptionHTML(params) {
-    const today = dayjs;
-    
-    ` <div class="input-radio">
-                <input type="radio" checked>
-                <div class="paragraphe-for-delivery-option">
-                  <span class="paragraphe-span">Friday, August 16</span>
-                  <span class="paragraphe-span2">FREE Shipping</span>
-                </div>
-              </div>`
-  }
+
+  
+    function deliveryOptionHTML() {
+      let html = '';
+      deliveryOptions.forEach((deliveryOption)=>{
+        const today = dayjs();
+        const deliveryDays = today.add(deliveryOption.deliveryOptionDays,'days');
+        const deliveryString = deliveryDays.format('dddd, MMMM D');
+        const deliveryPrice = deliveryOption.deliveryOptionPriceCents === 0
+        ? 'FREE'
+        : `$${deliveryOption.deliveryOptionPriceCents}-`
+
+        html += ` <div class="input-radio">
+        <input type="radio" checked>
+        <div class="paragraphe-for-delivery-option">
+         <span class="paragraphe-span">${deliveryString}</span>
+         <span class="paragraphe-span2">${deliveryPrice} Shipping</span>
+       </div>
+       </div>`
+       
+        });
+        return html;
+   }
