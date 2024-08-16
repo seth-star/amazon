@@ -24,7 +24,6 @@ export function addToCart(productId) {
     deliveryId:'1'
   })
  }
- console.log(cart);
 }
 
 export function updateCartQuantity() {

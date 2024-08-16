@@ -1,6 +1,7 @@
 import{cart} from '../data/cart.js';
 import { products } from '../data/products.js';
 import { deliveryOptions} from '../data/deliveryoptions.js';
+import { formatCurrency } from './utils/moneycurrency.js';
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 
 
@@ -29,7 +30,7 @@ import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
                 ${matchingProduct.name}
               </div>
               <div class="product-price">
-                $${matchingProduct.priceCents/100}
+                $${formatCurrency(matchingProduct.priceCents)}
               </div>
               <div class="product-quantity">
                 Quantity: ${cartItem.quantity} <span class="update-delete">Update Delete</span>
@@ -57,7 +58,7 @@ import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
         const deliveryString = deliveryDays.format('dddd, MMMM D');
         const deliveryPrice = deliveryOption.deliveryOptionPriceCents === 0
         ? 'FREE'
-        : `$${deliveryOption.deliveryOptionPriceCents}-`
+        : `$${formatCurrency(deliveryOption.deliveryOptionPriceCents)}-`
 
         html += ` <div class="input-radio">
         <input type="radio" checked>

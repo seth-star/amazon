@@ -1,5 +1,6 @@
 import { products } from "../data/products.js";
-import {addToCart, updateCartQuantity} from "../data/cart.js"
+import {addToCart, updateCartQuantity} from "../data/cart.js";
+import { formatCurrency } from "./utils/moneycurrency.js";
 let productsHTML = '';
 
 products.forEach((product)=>{
@@ -15,7 +16,7 @@ products.forEach((product)=>{
           <img src="images/images/ratings/rating-${product.rating.stars*10}.png" class="images-rating">
           <span class="count">${product.rating.count}</span>
         </div>
-        <div class="price-container">$${product.priceCents/100}</div>
+        <div class="price-container">$${formatCurrency(product.priceCents)}</div>
         <div class="select-container ">
           <select class="select js-select-${product.id}">
             <option>1</option>

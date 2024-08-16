@@ -4,10 +4,10 @@ export const deliveryOptions = [{
   deliveryOptionId: '1'
 },{
   deliveryOptionDays: 3,
-  deliveryOptionPriceCents: 4.99,
+  deliveryOptionPriceCents: 499,
   deliveryOptionId: '2'
 },{
   deliveryOptionDays: 1,
-  deliveryOptionPriceCents: 9.99,
+  deliveryOptionPriceCents: 999,
   deliveryOptionId: '3'
 }]
