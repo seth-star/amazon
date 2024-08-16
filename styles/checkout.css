@@ -112,9 +112,28 @@ color: rgb(177, 39, 4);
 font-size: 18px;
 font-weight: 500;
 }
+.input{
+  width: 45px;
+  height: 20px;
+  display: none;
+}
+.input2{
+ display: initial;
+}
 .update-delete{
 color: #017cb6;
 font-size: 18px;
+}
+.update{
+  display: none;
+}
+.save{
+  font-size: 20px;
+  display: none;
+  color: rgb(97, 97, 241);
+}
+.save2{
+  display: initial;
 }
 .delivery-options{
 height: 200px;

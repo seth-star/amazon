@@ -1,4 +1,4 @@
-export const cart = [{
+export let cart = [{
   productId:'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
   quantity:2,
   deliveryId:'1'
@@ -36,4 +36,25 @@ export function updateCartQuantity() {
     cartQuantiy += Number(selector);
   });
   document.querySelector('.js-cart-quantity').innerHTML = cartQuantiy;
+}
+export function removeFromCart(productId) {
+  let newCart = [];
+  cart.forEach((cartItem)=>{
+   if (cartItem.productId !== productId) {
+    newCart.push(cartItem);
+    cart = newCart;
+   }
+  });
+}
+export function updateItemQuantity(productId) {
+    let cartQuantiy = 0;
+    cart.forEach((cartItem)=>{
+      let update = cartItem.quantity
+      const selector = document.querySelector(`.js-select-${productId}`).value;
+      update = document.querySelector(`.js-input-${productId}`).value;
+     
+      cartQuantiy += Number(selector) 
+    });
+    document.querySelector('.js-items').innerHTML = cartQuantiy;
+    
 }
