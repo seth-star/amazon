@@ -1,5 +1,5 @@
 import { products } from "../data/products.js";
-import {addToCart, updateCartQuantity} from "../data/cart.js";
+import {addToCart, cartQuantity} from "../data/cart.js";
 import { formatCurrency } from "./utils/moneycurrency.js";
 let productsHTML = '';
 
@@ -17,7 +17,7 @@ products.forEach((product)=>{
           <span class="count">${product.rating.count}</span>
         </div>
         <div class="price-container">$${formatCurrency(product.priceCents)}</div>
-        <div class="select-container ">
+        <div class="select-container">
           <select class="select js-select-${product.id}">
             <option>1</option>
             <option>2</option>
@@ -41,13 +41,13 @@ products.forEach((product)=>{
 
 });
 document.querySelector('.js-main').innerHTML = productsHTML;
+cartQuantity()
 
 document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
 button.addEventListener('click',()=>{
   const productId = button.dataset.productId;
   addToCart(productId);
-  updateCartQuantity();
-  
+  cartQuantity();
   let timeoutId;
   let clickOn = false;
   if (!clickOn) {

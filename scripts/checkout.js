@@ -1,4 +1,4 @@
-import{cart,removeFromCart, updateItemQuantity} from '../data/cart.js';
+import{cart,cartQuantity2,cartQuantity3,removeFromCart, updateItemQuantity} from '../data/cart.js';
 import { products } from '../data/products.js';
 import { deliveryOptions} from '../data/deliveryoptions.js';
 import { formatCurrency } from './utils/moneycurrency.js';
@@ -14,14 +14,14 @@ import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
       matchingProduct = product;
      }
     })
-    let matchingOption;
+    let deliveryOption;
     deliveryOptions.forEach((option)=>{
       if (cartItem.deliveryId === option.deliveryOptionId) {
-        matchingOption = option;
+        deliveryOption = option;
       }
     })
     const today = dayjs();
-    const deliveryDays = today.add(matchingOption.deliveryOptionDays,'days');
+    const deliveryDays = today.add(deliveryOption.deliveryOptionDays,'days');
     const deliveryString = deliveryDays.format('dddd, MMMM D');
 
     orderSummaryHTML += 
@@ -33,6 +33,7 @@ import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
           <div class="delivery-container">
             <div class="image-container">
               <img src="${matchingProduct.image}" class="images">
+
             </div>
             <div class="delivery-details">
               <div class="product-name">
@@ -41,8 +42,8 @@ import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
               <div class="product-price">
                 $${formatCurrency(matchingProduct.priceCents)}
               </div>
-              <div class="product-quantity">
-                Quantity: ${cartItem.quantity} 
+              <div class="product-quantity ">
+                <div class="js-product-quantity-${matchingProduct.id}">Quantity: ${cartItem.quantity} </div>
                 <span class="update-delete js-update js-update-${matchingProduct.id}"data-product-id="${matchingProduct.id}" >
                  Update
                 </span>
@@ -65,9 +66,8 @@ import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
    
   })
   document.querySelector('.js-order-summary').innerHTML = orderSummaryHTML;
-
-  
-    function deliveryOptionHTML(matchingProduct,cartItem) {
+  cartQuantity2()
+  function deliveryOptionHTML(matchingProduct,cartItem) {
       let html = '';
       deliveryOptions.forEach((deliveryOption)=>{
         const today = dayjs();
@@ -91,7 +91,8 @@ import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
         });
         return html;
    }
-
+   
+   
    document.querySelectorAll('.js-delete').forEach((link)=>{
     link.addEventListener('click',()=>{
       const productId = link.dataset.productId;
@@ -114,6 +115,14 @@ import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
    document.querySelectorAll('.js-save').forEach((link)=>{
      link.addEventListener('click',()=>{
       const productId = link.dataset.productId;
-      updateItemQuantity(productId);
+      const selector = document.querySelector(`.js-input-${productId}`).value;
+      const newQuantity = Number(selector);
+      updateItemQuantity(productId,newQuantity)
+      cartQuantity2()
+      cartQuantity3()
+      document.querySelector(`.js-input-${productId}`).classList.remove('input2');
+      document.querySelector(`.js-save-${productId}`).classList.remove('save2');
+      document.querySelector(`.js-update-${productId}`).classList.remove('update');
+      
      })
    })

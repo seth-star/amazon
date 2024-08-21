@@ -89,9 +89,12 @@ padding-right: 100px;
 .image-container{
 display: flex;
 justify-content: center;
+
 }
 .images{
 height: 130px;
+max-width: 100%;
+max-width: 100%;
 }
 .delivery-details{
 display: grid;
@@ -111,6 +114,10 @@ color: rgb(177, 39, 4);
 .product-quantity{
 font-size: 18px;
 font-weight: 500;
+display: flex;
+justify-content: space-between;
+width: 245px;
+align-items: center;
 }
 .input{
   width: 45px;
@@ -123,6 +130,9 @@ font-weight: 500;
 .update-delete{
 color: #017cb6;
 font-size: 18px;
+}
+.update-delete:hover{
+  color: rgb(247, 187, 25);
 }
 .update{
   display: none;
