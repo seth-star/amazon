@@ -1,3 +1,5 @@
+
+
 export let cart = JSON.parse(localStorage.getItem('cart'));
 
 if (!cart) {
@@ -101,4 +103,17 @@ export function updateItemQuantity(productId,newQuantity) {
   document.querySelector(`.js-product-quantity-${productId}`).innerHTML = `Quantity: ${matchingProduct.quantity}`;
   
    saveToStorage();
+}
+
+export function updateDeliveryOption(productId,deliveryOptionId) {
+  let matchingOption;
+  cart.forEach((cartItem)=>{
+    if (cartItem.productId === productId) {
+      matchingOption = cartItem
+    } 
+  })
+  if (matchingOption) {
+    matchingOption.deliveryId = deliveryOptionId
+  }
+  saveToStorage()
 }

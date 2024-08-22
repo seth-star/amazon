@@ -1,4 +1,4 @@
-import{cart,cartQuantity2,cartQuantity3,removeFromCart, updateItemQuantity} from '../data/cart.js';
+import{cart,cartQuantity2,cartQuantity3,removeFromCart, updateDeliveryOption, updateItemQuantity} from '../data/cart.js';
 import { products } from '../data/products.js';
 import { deliveryOptions} from '../data/deliveryoptions.js';
 import { formatCurrency } from './utils/moneycurrency.js';
@@ -80,8 +80,8 @@ import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
         const isChecked = cartItem.deliveryId === deliveryOption.deliveryOptionId;
 
         html += 
-     ` <div class="input-radio">
-         <input type="radio" name="radio-${matchingProduct.id}" ${isChecked ? 'checked': ''}>
+     ` <div class="input-radio js-input-radio" data-delivery-option-id="${deliveryOption.deliveryOptionId}" data-product-id="${matchingProduct.id}"  >
+         <input  type="radio" name="radio-${matchingProduct.id}" ${isChecked ? 'checked': ''}>
          <div class="paragraphe-for-delivery-option">
            <span class="paragraphe-span">${deliveryString}</span>
            <span class="paragraphe-span2">${deliveryPrice} Shipping</span>
@@ -89,6 +89,7 @@ import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
        </div>`
        
         });
+
         return html;
    }
    
@@ -117,12 +118,20 @@ import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
       const productId = link.dataset.productId;
       const selector = document.querySelector(`.js-input-${productId}`).value;
       const newQuantity = Number(selector);
-      updateItemQuantity(productId,newQuantity)
-      cartQuantity2()
-      cartQuantity3()
+      updateItemQuantity(productId,newQuantity);
+      cartQuantity2();
+      cartQuantity3();
       document.querySelector(`.js-input-${productId}`).classList.remove('input2');
       document.querySelector(`.js-save-${productId}`).classList.remove('save2');
       document.querySelector(`.js-update-${productId}`).classList.remove('update');
       
      })
+   })
+
+   document.querySelectorAll('.js-input-radio').forEach((link)=>{
+    link.addEventListener('click',()=>{
+      const productId = link.dataset.productId;
+      const deliveryOptionId = link.dataset.deliveryOptionId;
+      updateDeliveryOption(productId,deliveryOptionId);
+    })
    })
