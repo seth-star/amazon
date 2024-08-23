@@ -28,14 +28,14 @@ export function addToCart(productId) {
   matchingItem = cartItem;
  }
  });
+ 
+ const selector = document.querySelector(`.js-select-${productId}`).value;
  if (matchingItem) {
-  const selector = document.querySelector(`.js-select-${productId}`).value;
-  const selectorNum = Number(selector)
-  matchingItem.quantity += selectorNum;
+  matchingItem.quantity += Number(selector);
  }else{
   cart.push({
     productId:productId,
-    quantity:1,
+    quantity: Number(selector),
     deliveryId:'1'
   })
  }

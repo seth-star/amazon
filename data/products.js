@@ -1,3 +1,6 @@
+
+
+
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -658,4 +661,12 @@ export const products = [
     ]
   }
 ]
-
+export function setProduct(cartItem) {
+  let matchingProduct;
+  products.forEach((product)=>{
+   if (cartItem.productId === product.id) {
+    matchingProduct = product;
+   }
+  })
+  return matchingProduct;
+}
