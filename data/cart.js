@@ -30,7 +30,8 @@ export function addToCart(productId) {
  });
  if (matchingItem) {
   const selector = document.querySelector(`.js-select-${productId}`).value;
-  matchingItem.quantity += Number(selector);
+  const selectorNum = Number(selector)
+  matchingItem.quantity += selectorNum;
  }else{
   cart.push({
     productId:productId,
