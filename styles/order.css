@@ -127,9 +127,13 @@ body{
     bottom: 28px;
     font-size: 19px;
   }
+  .main-section{
+    display: flex;
+    flex-direction: column;
+  }
   .main{
-    display: grid;
-    grid-template-rows: 40px 40px 200px 300px;
+    display: flex;
+    flex-direction: column;
     border-color: rgb(199, 196, 196);
     border-width: 1px;
     border-style: solid;
@@ -137,7 +141,7 @@ body{
     margin-left: 200px;
     margin-top: 100px;
     border-radius: 6px;
-    height: 480px;
+    
   }
   .first-section{
     display: flex;
@@ -145,64 +149,61 @@ body{
     width: 950px;
   }
   .left-container{
-    align-items: end;
+    width: 175px;
     display: flex;
-    justify-content: start;
-    font-size: 18px;
+    flex-direction: column;
     height: 100%;
-    margin-right: 40px;
-    margin-left: 20px; 
+    justify-content: center;
+    align-items: center;
+    
   }
-  .span{
+  .order{
     font-weight: 600;
-    font-size: 19px;  
+    font-size: 18px; 
+  }
+  .date{
+    font-size: 18px;
+    width: 110px;
+    margin-top: -2px;
   }
   .middle-container{
-    align-items: end;
     display: flex;
-    justify-content: start;
-    font-size: 18px;
+    flex-direction: column;
     height: 100%;
+    justify-content: center;
+    align-items: start;
     flex: 1;
+    
+  }
+  .total{
+    font-weight: 600;
+    font-size: 18px;
+    width: 80px; 
+  }
+  .amount{
+    
+    font-size: 18px;
+    width: 80px; 
+
   }
   .right-container{
-    align-items: end;
     display: flex;
-    justify-content: start;
-    font-size: 18px;
+    flex-direction: column;
     height: 100%;
-    margin-right: 265px;
-  }
-  .second-section{
-    display: flex;
-    background-color: rgb(240, 242, 242);
-    width: 950px;
-  }
-  .left-container2{
+    justify-content: center;
     align-items: start;
-    display: flex;
-    justify-content: start;
-    font-size: 18px;
-    height: 100%;
-    margin-right: 90px;
-    margin-left: 20px;
+    padding-right: 20px;
   }
-  .middle-container2{
-    align-items: start;
-    display: flex;
-    justify-content: start;
+  .order-id{
+    font-weight: 600;
     font-size: 18px;
-    height: 100%;
-    flex: 1;
+    width: 80px
   }
-  .right-container2{
-    align-items: start;
-    display: flex;
-    justify-content: start;
+  .id-number{
     font-size: 18px;
-    height: 100%;
-    margin-right: 40px;
+    
   }
+  
   .third-section{
     display: flex;
     align-items: start;
@@ -226,6 +227,8 @@ body{
   }
   .images{
     height: 120px;
+    max-width: 100%;
+    max-height: 100%;
   }
   .product-name{
     font-size: 20px;
@@ -235,6 +238,7 @@ body{
   }
   .paragraphe{
     font-size: 19px;
+    margin: 0;
   }
   .paragraphe-track{
     font-size: 16px;
