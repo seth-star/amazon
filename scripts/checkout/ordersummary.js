@@ -1,5 +1,5 @@
 import{cart,cartQuantity2,cartQuantity3,removeFromCart, updateDeliveryOption, updateItemQuantity} from '../../data/cart.js';
-import { products,setProduct } from '../../data/products.js';
+import { setProduct } from '../../data/products.js';
 import { deliveryOptions, getOption} from '../../data/deliveryoptions.js';
 import { formatCurrency } from '../utils/moneycurrency.js';
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
@@ -19,7 +19,8 @@ import { renderPaymentSummary } from './paymentsummary.js';
  
      orderSummaryHTML += 
  
-     `<section class="order-summary-section order-summary-section-${matchingProduct.id}">
+     `<section class="order-summary-section order-summary-section-${matchingProduct.id} 
+     js-order-section">
            <div class="delivery-date">
               Delivery date: ${deliveryString}
            </div>
@@ -36,13 +37,13 @@ import { renderPaymentSummary } from './paymentsummary.js';
                  $${formatCurrency(matchingProduct.priceCents)}
                </div>
                <div class="product-quantity ">
-                 <div class="js-product-quantity-${matchingProduct.id}">Quantity: ${cartItem.quantity} </div>
+                 <div class="js-product-quantity-${matchingProduct.id} js-quantity-${matchingProduct.id}">Quantity: ${cartItem.quantity} </div>
                  <span class="update-delete js-update js-update-${matchingProduct.id}"data-product-id="${matchingProduct.id}" >
                   Update
                  </span>
                  <input type="number" class="input  js-input-${matchingProduct.id}">
                  <span class="save js-save js-save-${matchingProduct.id}" data-product-id="${matchingProduct.id}" >Save</span>
-                 <span class="update-delete js-delete" data-product-id="${matchingProduct.id}">
+                 <span class="update-delete js-delete js-delete-${matchingProduct.id}" data-product-id="${matchingProduct.id}">
                   Delete
                  </span>
                </div>
@@ -58,8 +59,8 @@ import { renderPaymentSummary } from './paymentsummary.js';
       </section>`
     
    })
-   document.querySelector('.js-order-summary').innerHTML = orderSummaryHTML;
-   cartQuantity2()
+   document.querySelector('.js-order-summary').innerHTML =  orderSummaryHTML ;
+  
    function deliveryOptionHTML(matchingProduct,cartItem) {
        let html = '';
        deliveryOptions.forEach((deliveryOption)=>{
@@ -87,6 +88,9 @@ import { renderPaymentSummary } from './paymentsummary.js';
     }
     
     
+    
+   
+    
     document.querySelectorAll('.js-delete').forEach((link)=>{
      link.addEventListener('click',()=>{
        const productId = link.dataset.productId;
@@ -95,6 +99,7 @@ import { renderPaymentSummary } from './paymentsummary.js';
        container.remove();
        renderOrderSummary();
        renderPaymentSummary();
+       
      })
     });
     document.querySelectorAll('.js-update').forEach((link)=>{
@@ -114,8 +119,7 @@ import { renderPaymentSummary } from './paymentsummary.js';
        const newQuantity = Number(selector);
        updateItemQuantity(productId,newQuantity);
        renderPaymentSummary();
-       cartQuantity2();
-       cartQuantity3();
+       
        document.querySelector(`.js-input-${productId}`).classList.remove('input2');
        document.querySelector(`.js-save-${productId}`).classList.remove('save2');
        document.querySelector(`.js-update-${productId}`).classList.remove('update');
@@ -131,5 +135,5 @@ import { renderPaymentSummary } from './paymentsummary.js';
        renderPaymentSummary();
      })
     })
- 
+     
  }

@@ -1,5 +1,5 @@
 import { setProduct } from "../../data/products.js";
-import { cart, cartQuantity3 } from "../../data/cart.js";
+import { cart, cartQuantity3,cartQuantity2 } from "../../data/cart.js";
 import { formatCurrency } from "../utils/moneycurrency.js";
 import { getOption } from "../../data/deliveryoptions.js";
 
@@ -53,7 +53,7 @@ export function renderPaymentSummary() {
             <button class="place-your-order-button">Place your order</button>
           </a>
         </div>`
-        console.log(html);
         document.querySelector('.js-payment-summary').innerHTML = html;
         cartQuantity3();
+        cartQuantity2();
 }

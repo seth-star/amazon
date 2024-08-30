@@ -1,6 +1,9 @@
 
 
-export let cart = JSON.parse(localStorage.getItem('cart'));
+export let cart;
+loadFromStorage();
+export function loadFromStorage() {
+  cart = JSON.parse(localStorage.getItem('cart'));
 
 if (!cart) {
   cart = 
@@ -14,8 +17,7 @@ if (!cart) {
     deliveryId:'2'
   }];
 }
-
-
+}
 
 function saveToStorage() {
  return localStorage.setItem('cart',JSON.stringify(cart));
@@ -28,14 +30,15 @@ export function addToCart(productId) {
   matchingItem = cartItem;
  }
  });
- 
- const selector = document.querySelector(`.js-select-${productId}`).value;
+ const selector = document.querySelector(`.js-select-${productId}`);
+
  if (matchingItem) {
-  matchingItem.quantity += Number(selector);
+  matchingItem.quantity += 1 || Number(selector.value);
  }else{
+
   cart.push({
     productId:productId,
-    quantity: Number(selector),
+    quantity: 1 || Number(selector.value),
     deliveryId:'1'
   })
  }
@@ -64,28 +67,28 @@ export function cartQuantity() {
   
   saveToStorage();
 }
+
 export function cartQuantity2() {
   let cartQuantiy = 0;
   
   cart.forEach((cartItem)=>{
-  cartQuantiy += cartItem.quantity;
- 
+  cartQuantiy += cartItem.quantity ;
   });
-  
-  document.querySelector('.js-items').innerHTML = `${cartQuantiy} items`
-  
+  if (document.querySelector('.js-items')) {
+    document.querySelector('.js-items').innerHTML = `${cartQuantiy} items`
+  }
   saveToStorage();
-}
+  
+  }
+
 export function cartQuantity3() {
   let cartQuantiy = 0;
-  
   cart.forEach((cartItem)=>{
   cartQuantiy += cartItem.quantity;
  
   });
   
   document.querySelector('.js-items2').innerHTML = `items(${cartQuantiy})`
-  
   saveToStorage();
 }
 
