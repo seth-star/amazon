@@ -1,4 +1,4 @@
-import{cart,cartQuantity2,cartQuantity3,removeFromCart, updateDeliveryOption, updateItemQuantity} from '../../data/cart.js';
+import{cart,removeFromCart, updateDeliveryOption, updateCartQuantity} from '../../data/cart.js';
 import { setProduct } from '../../data/products.js';
 import { deliveryOptions, getOption} from '../../data/deliveryoptions.js';
 import { formatCurrency } from '../utils/moneycurrency.js';
@@ -117,7 +117,7 @@ import { renderPaymentSummary } from './paymentsummary.js';
        const productId = link.dataset.productId;
        const selector = document.querySelector(`.js-input-${productId}`).value;
        const newQuantity = Number(selector);
-       updateItemQuantity(productId,newQuantity);
+       updateCartQuantity(productId,newQuantity);
        renderPaymentSummary();
        
        document.querySelector(`.js-input-${productId}`).classList.remove('input2');
