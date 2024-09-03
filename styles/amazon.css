@@ -207,15 +207,13 @@ p{
   margin-left: 14px;
   background-color: rgb(240, 240, 240);
 }
-.select:optional{
-  font-size: 16px;
-}
 .add-to-cart-container{
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 18px;
   position: relative;
+  flex-direction: column;
  
 }
 .add-to-cart-button{

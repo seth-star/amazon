@@ -1,4 +1,40 @@
+import { formatCurrency } from "../scripts/utils/moneycurrency.js";
 
+class Products{
+  id;
+  image;
+  name;
+  rating;
+  priceCents;
+  constructor(productDetails){
+  this.id = productDetails.id;
+  this.image = productDetails.image;
+  this.name = productDetails.name;
+  this.rating = productDetails.rating;
+  this.priceCents = productDetails.priceCents;
+  }
+  getInfo(){
+    return '';
+  }
+  getPriceCents(){
+    return `$${formatCurrency(this.priceCents)}`;
+  }
+  
+  getRating(){
+    return `images/images/ratings/rating-${this.rating.stars*10}.png`;
+  }
+}
+
+
+class Clothing extends Products{
+  constructor(productDetails){
+    super(productDetails)
+    this.sizeChartLink = productDetails.sizeChartLink;
+  }
+  getInfo(){
+    return `<a href="${this.sizeChartLink}" target="_blank">Extra-Info</a>`;
+  }
+}
 
 
 export const products = [
@@ -46,7 +82,7 @@ export const products = [
       "mens"
     ],
     type: "clothing",
-    sizeChartLink: "images/clothing-size-chart.png"
+    sizeChartLink: "images/images/clothing-size-chart.png"
   },
   {
     id: "54e0eccd-8f36-462b-b68a-8182611d9add",
@@ -660,13 +696,23 @@ export const products = [
       "mens"
     ]
   }
-]
+].map((productDetails)=>{
+  if (productDetails.type === 'clothing') {
+    return new Clothing(productDetails)
+  }else{
+    return new Products(productDetails);
+  }
+})
+console.log(products);
 export function setProduct(cartItem) {
   let matchingProduct;
+  
   products.forEach((product)=>{
-   if (cartItem.productId === product.id) {
-    matchingProduct = product;
-   }
-  })
-  return matchingProduct;
+    
+  if (cartItem.productId === product.id) {
+        matchingProduct = product;
+    }
+  
+   })
+   return matchingProduct;
 }

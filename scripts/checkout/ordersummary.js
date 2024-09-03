@@ -34,7 +34,7 @@ import { renderPaymentSummary } from './paymentsummary.js';
                  ${matchingProduct.name}
                </div>
                <div class="product-price">
-                 $${formatCurrency(matchingProduct.priceCents)}
+                 ${matchingProduct.getPriceCents()}
                </div>
                <div class="product-quantity ">
                  <div class="js-product-quantity-${matchingProduct.id} js-quantity-${matchingProduct.id}">Quantity: ${cartItem.quantity} </div>
