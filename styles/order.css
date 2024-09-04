@@ -7,13 +7,17 @@
     width: 950px;
     margin-left: 200px;
     margin-top: 100px;
-    border-radius: 6px;
+    border-radius: 10px;
+    padding-bottom: 30px;
     
   }
   .first-section{
     display: flex;
     background-color: rgb(240, 242, 242);
     width: 950px;
+    height: 90px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
   }
   .left-container{
     width: 175px;
