@@ -104,3 +104,13 @@ export function updateDeliveryOption(productId,deliveryOptionId) {
   }
   saveToStorage()
 }
+export function loadCart(fun) {
+let cart = []
+  const xhr = new XMLHttpRequest();
+  xhr.addEventListener('load',()=>{
+   cart = xhr.response;
+   fun();
+  });
+  xhr.open('GET','https://supersimplebackend.dev/cart');
+  xhr.send();
+}
