@@ -50,10 +50,24 @@ export function renderPaymentSummary() {
         </div>
         <div class="fourth-line">
           <a href="orders.html" target="_blank">
-            <button class="place-your-order-button">Place your order</button>
+            <button class="place-your-order-button js-place-order">Place your order</button>
           </a>
         </div>`
         document.querySelector('.js-payment-summary').innerHTML = html;
         
         cartQuantity();
+        document.querySelector('.js-place-order').addEventListener('click',async ()=>{
+          const response = await fetch('https://supersimplebackend.dev/orders',{
+            method:'POST',
+            headers:{
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              cart:cart
+            })
+          });
+          const order = await response.json();
+          console.log(order);
+          window.Location.href = '127.0.0.1:5500/order.html'
+        });
 }
