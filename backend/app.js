@@ -6,7 +6,12 @@ console.log('Listen port 3000');
 });
 
 app.use(express.static('public'));
-app.use()
+app.set('view engine','ejs');
+
 app.get('/amazon',(req,res)=>{
- res.sendFile('./amazon.html',{root:__dirname});
+ res.render('amazon');
 })
+
+app.get('/checkout',(req,res)=>{
+  res.render('checkout');
+ })
