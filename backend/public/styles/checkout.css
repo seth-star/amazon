@@ -1,0 +1,251 @@
+
+.header{
+display: flex;
+justify-content: space-between;
+align-items: center;
+position: fixed;
+left: 0px;
+right: 0px;
+top: 0px;
+height: 70px;
+z-index: 100;
+padding-top: 10px;
+background-color: white;
+}
+.left-section{
+height: 35px;
+margin-left: 65px;
+flex: 1;
+}
+.amazon-logo{
+height: 100%;
+}
+.middle-section{
+display: flex;
+flex: 1;
+height: 35px;
+align-items: center;
+justify-content: center;
+}
+.paragraphe-header{
+font-size: 28px;
+font-weight: 600;
+}
+.items{
+color: rgb(0, 113, 133);
+font-weight: 500;
+font-size: 24px ;
+}
+.right-section{
+display: flex;
+flex: 1;
+justify-content: right;
+margin-right: 65px;
+}
+.main{
+padding-top: 30px;
+padding-bottom: 400px;
+display: flex;
+flex-direction: row; 
+margin-left: 20px;
+}
+.review-your-oder{
+font-size: 24px;
+font-weight: bold;
+padding-top: 70px;
+margin-left: 65px;
+}
+.order-summary-section{
+padding-right: 50px;
+border-color: rgb(199, 196, 196);
+border-width: 1px;
+border-style: solid;
+border-radius: 4px;
+margin-left: 40px;
+height: 280px;
+}
+.delivery-date{
+font-size: 20px;
+font-weight: bold;
+color:rgb(0, 118, 0) ;
+padding-top: 15px;
+padding-bottom: 15px;
+padding-left: 15px;
+}
+.delivery-container{
+display: grid;
+grid-template-columns: 150px 350px 80px 80px;
+padding-right: 100px;
+}
+.image-container{
+display: flex;
+justify-content: center;
+
+}
+.images{
+height: 130px;
+max-width: 100%;
+max-width: 100%;
+}
+.delivery-details{
+display: grid;
+grid-template-rows: 50px 30px 30px;
+margin-left: 20px;
+}
+.product-name{
+font-size: 18px;
+font-weight: bold;
+width: 310px;
+}
+.product-price{
+font-size: 18px;
+font-weight: bold;
+color: rgb(177, 39, 4);
+}
+.product-quantity{
+font-size: 18px;
+font-weight: 500;
+display: flex;
+justify-content: space-between;
+width: 245px;
+align-items: center;
+}
+.input{
+  width: 45px;
+  height: 20px;
+  display: none;
+}
+.input2{
+ display: initial;
+}
+.update-delete{
+color: #017cb6;
+font-size: 18px;
+}
+.update-delete:hover{
+  color: rgb(247, 187, 25);
+}
+.update{
+  display: none;
+}
+.save{
+  font-size: 20px;
+  display: none;
+  color: rgb(97, 97, 241);
+}
+.save2{
+  display: initial;
+}
+.delivery-options{
+height: 200px;
+display: grid;
+grid-template-rows: 30px 60px 60px 60px;
+}
+.delivery-options-head{
+font-size: 18px;
+font-weight: bold;
+width: 250px;
+}
+.input-radio{
+display: flex;
+align-items: center;
+}
+.paragraphe-for-delivery-option{
+font-size: 18px;
+width: 210px;
+}
+.paragraphe-span{
+color: rgb(0, 118, 0);
+font-weight: bold;
+}
+.paragraphe-span2{
+color: rgb(120, 120, 120);
+}
+.payment-summary-section{
+display: grid;
+grid-template-rows: 40px 40px 40px 40px 40px 30px 60px 60px;
+margin-left: 15px;
+width: 395px;
+height:360px;
+border-radius: 4px;
+border-color: rgb(199, 196, 196);
+border-width: 1px;
+border-style: solid;
+justify-content: center;
+padding-top: 5px;
+}
+.oder-summary{
+font-size: 20px;
+font-weight: bold;
+display: flex;
+align-items: center;
+padding-left: 15px;
+}
+.first-line{
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding-left: 15px;
+padding-right: 20px;
+font-size: 17px;
+
+}
+.second-line{
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding-left: 15px;
+padding-right: 20px;
+font-size: 19px;
+padding-top: 20px;
+color: rgb(177, 39, 4);
+font-weight: bold;
+}
+.third-line{
+display: flex;
+justify-content: start;
+align-items: center;
+padding-left: 15px;
+font-size: 17px;
+}
+.checkbox{
+margin-left: 10px;
+}
+.fourth-line{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.place-your-order-button{
+height: 45px;
+padding-left: 114px;
+padding-right: 114px; 
+border-radius: 10px;
+font-size: 14px;
+background-color: rgb(255, 216, 20);
+border: none;
+}
+.order-summary-section-container{
+display: grid;
+row-gap: 10px; 
+}
+.estimated-tax-container{
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding-left: 15px;
+padding-right: 20px;
+font-size: 19px;
+border-width: 1px;
+border-bottom-style: solid;
+border-bottom-color:rgb(199, 196, 196) ;
+width: 320px;
+font-size: 17px;
+
+}
+.underline-total{
+border-width: 1px;
+border-bottom-style: solid;
+border-bottom-color:rgb(199, 196, 196) ;
+padding-bottom: 5px;
+}
