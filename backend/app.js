@@ -15,3 +15,7 @@ app.get('/amazon',(req,res)=>{
 app.get('/checkout',(req,res)=>{
   res.render('checkout');
  })
+ 
+
+
+ 
